@@ -16,4 +16,24 @@ with open('recipes.txt') as file:
             })
         file.readline()
         cook_book[dish_name] = ingredients
-print(cook_book)
+# print(cook_book)
+
+
+def get_shop_list_by_dishes(dishes, person_count):
+    shop_list = {}
+    for dish, ingrid in cook_book.items():
+        if dish in dishes:
+            for j in ingrid:
+                j['quantity'] = int(j.get('quantity')) * person_count
+                if j['ingredient_name'] not in shop_list:
+                    shop_list[j.get('ingredient_name')] = j
+                    j.pop('ingredient_name')
+                else:
+                    j['quantity'] = int(j.get('quantity')) + int(j.get('quantity'))
+                    shop_list[j.get('ingredient_name')] = j
+                    j.pop('ingredient_name')
+    return shop_list
+
+
+print(get_shop_list_by_dishes(['Омлет', 'Утка по-пекински'], 2))
+
