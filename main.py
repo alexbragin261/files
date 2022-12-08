@@ -36,4 +36,3 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 
 print(get_shop_list_by_dishes(['Омлет', 'Утка по-пекински'], 2))
-
